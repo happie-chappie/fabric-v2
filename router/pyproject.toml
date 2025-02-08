@@ -5,11 +5,21 @@ description = "Default template for PDM package"
 authors = [
     {name = "Your Name", email = "your.email@example.com"},
 ]
-dependencies = []
-requires-python = "==3.10.*"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+    "pydantic>=2.4.2",
+]
+requires-python = "==3.11.*"
 readme = "README.md"
 license = {text = "MIT"}
 
 
 [tool.pdm]
 distribution = false
+
+
+[tool.pdm.scripts]
+_.env_file = ".env"
+dev = "uvicorn main:app --reload --host 0.0.0.0 --port 8000"
+prod = "uvicorn main:app --host 0.0.0.0 --port 8000"
