@@ -14,7 +14,7 @@ ENV VERSION=${IMAGE_VERSION}
 RUN echo ${IMAGE_VERSION} > /app/version.txt
 
 # Copy the pdm configuration files to the container
-COPY pyproject.toml pdm.lock* /app/
+COPY pyproject.toml pdm.lock* ./
 
 # Install PDM
 RUN pip install pdm
