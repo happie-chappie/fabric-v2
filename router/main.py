@@ -9,6 +9,11 @@ app = FastAPI(
     version="1.0.0"
 )
 
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Fly.io"""
+    return {"status": "healthy"}
+
 # Pydantic model for our data
 class Item(BaseModel):
     id: Optional[int] = None
